@@ -34,7 +34,7 @@ const snapshot = async () => {
         if (file.isFile()) {
           const fileStat = await fs.stat(fullPath);
           const fileContent = await fs.readFile(fullPath);
-          entries.push({ "path": relativePath, "type": "file", "size": fileStat.size, "content": fileContent.toString() })
+          entries.push({ "path": relativePath, "type": "file", "size": fileStat.size, "content": Buffer.from(fileContent).toString('base64') })
         }
       }
     }
